@@ -69,9 +69,15 @@ function handelUpdate(getProduct) {
 // xóa sản phẩm
 function handelDelete(id) {
   const getProduct = JSON.parse(localStorage.getItem('product'));
-  getProduct.forEach((product, index) => {
+  getProduct.forEach((product) => {
     if (product.id === id) {
-      getProduct.splice(index, 1);
+      if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) {
+        getProduct.forEach((product, index) => {
+          if (product.id === id) {
+            getProduct.splice(index, 1);
+          }
+        });
+      }
     }
   });
 
