@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./admin.css">
+</head>
+<body>
+    
+<style>
+
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <div>
+<a href="ordermanagement.html">Quản lí đơn hàng</a>  
+<a href="usermanagement.html">Quản lí User</a>
+    </div>
+
+    <input type="text" placeholder="enter infomation product" id="mySearch" onkeyup="filter()" style="height: 40px; width: 500px; border-radius: 8px; font-size: 20px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 0px 20px;">
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- open modal when add the product -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <button onclick="handelAdmin()">add</button>
+    <p>Some text in the Modal..</p>
+    <input type="text" placeholder="name" class="name">
+    <input type="text" placeholder="price" class="price">
+    <input type="text" placeholder="Image" class="image">
+    <input type="text" placeholder="description" class="description">
+   
+  </div>
+</div>
+<!-- open modal when Edit the product -->
+<div class="modal-content-edit">
+  <button class="close-edit">&times;</button>
+  <!-- <button onclick="handelEdit()">EDIT</button> -->
+  <input type="text" placeholder="name" class="name-edit">
+  <input type="text" placeholder="price" class="price-edit">
+  <input type="text" placeholder="description" class="description-edit">
+  <button class="save-button">Save</button>
+</div>
+
+<!-- open modal when add the product -->
+<Button id="myBtn" onclick="modal()">ADD</Button>
+<table id="customers">
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>image</th>
+    <th>Description</th>
+    <th>Action</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+  </tr>
+</tbody>
+</table>
+
+</div>
+
+</body>
+<script src="admin.js"></script>
+</html>

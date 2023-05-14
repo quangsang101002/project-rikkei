@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./home.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <div>
+      <div class="header_nav-main">
+        <!-- <header> -->
+        <div class="logo-vf">
+          <img
+            src="https://vinfastauto.com/themes/porto/img/new-home-page/VinFast-logo.svg"
+            alt="logo_vinfat"
+          />
+        </div>
+
+        <div class="header_nav-list">
+          <ul>
+            <li>Giới thiệu</li>
+            <li>Ô tô điện</li>
+            <li>Xe máy điện</li>
+            <li>Pin và trạm sạc</li>
+          </ul>
+        </div>
+
+        <div class="header_nav-register">
+            <div>
+
+            </div>
+          <a href="login.html">Tài khoản</a>
+          <i class="fa-solid fa-user"></i>
+          <a href="">ĐĂNG KÍ LÁI THỬ</a>
+        </div>
+        <!-- </header> -->
+      </div>
+      <section>
+        <section>
+
+
+            <div class="swiper-slide d-lg-block d-none swiper-slide-active" role="group" aria-label="1 / 2" >
+                <video playsinline="" autoplay="" muted="" loop="" id="video-vinfast-banner" poster="/">
+                <source src="https://storage.googleapis.com/vinfast-data-01/VinFast-VF8-VF9-electric-SUV-cars.mp4" type="video/mp4">
+                </video>
+                </div>
+
+            <!-- <video playsinline="" autoplay="" muted="" loop="" id="video-vinfast-banner" poster="/">
+                <source src="https://storage.googleapis.com/vinfast-data-01/VinFast-VF8-VF9-electric-SUV-cars.mp4" type="video/mp4">
+                </video> -->
+           
+          </video>
+           
+        
+        </section>
+        <div id="container">
+          <div class="product">
+            <img src="./image/vf34.png" alt="" />
+            <span>$900.00</span>
+            <h2 id="car1">Xe ô tô VinFast LUX S.A màu đỏ</h2>
+
+            <button>Add</button>
+          </div>
+
+          <div class="product">
+            <img src="./image/vf5-orange.png" alt="" />
+            <span>$900.00</span>
+            <h2 id="car2">Xe ô tô VinFast LUX A2.0</h2>
+            <button>Add</button>
+          </div>
+
+          <div class="product">
+            <img src="./image/vf8-black.jpg" alt="" />
+            <span>$900.00</span>
+            <h2 id="car3">Xe ô tô VinFast VF5 màu đỏ</h2>
+            <button>Add</button>
+          </div>
+
+          <div class="product">
+            <img src="./image/vf-VF9.png" alt="" />
+            <span>$900.00</span>
+            <h2 id="car4">Xe ô tô VinFast VF9 màu đỏ</h2>
+            <button>Add</button>
+
+          </div>
+
+          
+        </div>
+        <div class="product_content">
+            
+        </div>
+      </section>
+    </div>
+
+    <script>
+      const getProduct = JSON.parse(localStorage.getItem("product"))
+      
+      // const productPrice = document.querySelector(".product_price")
+      // const productDes = document.querySelector(".description")
+
+      
+
+     
+      function addProduct(){
+        const productContent = document.querySelector(".product_content")
+        const name = document.createElement('h2')
+      const price = document.createElement("h3")
+      const des = document.createElement("p")
+      const div = document.createElement("div")
+      const button = document.createElement("button")
+
+
+        getProduct.map((product) => {
+          const productContent = document.querySelector(".product_content")
+          const image = document.createElement("img")
+          const name = document.createElement('h2')
+          const price = document.createElement("h3")
+         const des = document.createElement("p")
+        const div = document.createElement("div")
+        const button = document.createElement("button")
+
+//         const myImg = document.querySelector('img');
+// myImg.src = 'đường dẫn tới file ảnh';
+
+          image.src = product.image
+          name.innerText = product.name
+          price.innerText = product.price
+          des.innerText = product.description
+          button.innerText = 'Mua hàng'
+          div.classList.add('productlp')
+
+          div.append(image)
+          div.append(name)
+          div.append(price)
+          div.append(des)
+          div.appendChild(button)
+          productContent.append(div)
+        })
+      }
+      addProduct()
+
+
+
+    </script>
+  </body>
+</html>
