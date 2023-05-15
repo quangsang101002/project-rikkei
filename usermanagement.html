@@ -1,12 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-  </head>
-  <body>
-    <h2>quản lí người dùng</h2>
-  </body>
+    <link rel="stylesheet" href="./admin.css">
+</head>
+<body>
+    
+<style>
+
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <div>
+<a href="ordermanagement.html">Quản lí đơn hàng</a>  
+<a href="usermanagement.html">Quản lí User</a>
+    </div>
+
+    <input type="text" placeholder="enter infomation product" id="mySearch" onkeyup="searchUser()" style="height: 40px; width: 500px; border-radius: 8px; font-size: 20px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 0px 20px;">
+
+<table id="customers">
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>UserName</th>
+    <th>Email</th>
+  </tr>
+  <!-- <tr >
+    <td>${index + 1}</td>
+    <td >${product.name}</td>
+    <td>${product.price}</td>
+    <td>${product.image}</td>
+    <td>${product.description}</td>
+    </tr> -->
+
+</thead>
+<tbody>
+  <!-- <tr>
+  </tr> -->
+</tbody>
+</table>
+</div>
+
+<script>
+  const getUser = JSON.parse(localStorage.getItem("user"))
+  function rederUser(){
+    const table = document.querySelector('tbody');
+    let tableadd = ""
+    getUser.map((user, index) => {
+      tableadd += `
+    <tr >
+    <td>${index +1}</td>
+    <td>${user.username}</td>
+    <td >${user.email}</td>
+    </tr>
+    
+      `
+    });
+    table.innerHTML = tableadd;
+   }
+   rederUser()
+function searchUser() {
+  const tr = document.querySelectorAll("tr")
+  // const td = document.querySelectorAll("td")
+  const mySearch = document.querySelector("#mySearch").value
+  const value =  mySearch.toUpperCase()
+
+
+  for(let i = 0; i < tr.length; i++){
+    const td = tr[i].getElementsByTagName("td")[1]
+
+    if(td){
+      const textValue = td.textContent || td.innerHTML || td.innerText;
+      if (textValue.toUpperCase().indexOf(value) > -1)  {
+      tr[i].style.display = ""
+    }else{
+      tr[i].style.display = "none"
+    }
+
+    }
+ }
+}
+
+
+
+
+
+</script>
+</body>
 </html>
