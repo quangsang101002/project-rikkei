@@ -38,7 +38,6 @@
             </div>
           <a href="register.html">Đăng kí</a>|
           <a href="login.html">Đăng nhập</a>
-
           <!-- <i class="fa-solid fa-user"></i> -->
           <a href="">ĐĂNG KÍ LÁI THỬ</a>
         </div>
@@ -77,23 +76,18 @@
             <h2 id="car2">Xe ô tô VinFast LUX A2.0</h2>
             <button>Add</button>
           </div>
-
           <div class="product">
             <img src="./image/vf8-black.jpg" alt="" />
             <span>$900.00</span>
             <h2 id="car3">Xe ô tô VinFast VF5 màu đỏ</h2>
             <button>Add</button>
           </div>
-
           <div class="product">
             <img src="./image/vf-VF9.png" alt="" />
             <span>$900.00</span>
             <h2 id="car4">Xe ô tô VinFast VF9 màu đỏ</h2>
             <button>Add</button>
-
           </div>
-
-          
         </div>
         <div class="product_content">
             
@@ -107,15 +101,9 @@
       rederPage(userLogin) 
     
       function addProduct(){
-      // const productContent = document.querySelector(".product_content")
-      // const name = document.createElement('h2')
-      // const price = document.createElement("h3")
-      // const des = document.createElement("p")
-      // const div = document.createElement("div")
-      // const button = document.createElement("button")
+   
 
-
-        getProduct.map((product) => {
+        getProduct.forEach((product, index) => {
           const productContent = document.querySelector(".product_content")
           const image = document.createElement("img")
           const name = document.createElement('h2')
@@ -123,8 +111,6 @@
          const des = document.createElement("p")
         const div = document.createElement("div")
         const button = document.createElement("button")
-
-
           image.src = product.image
           name.innerText = product.name
           price.innerText = product.price
@@ -132,24 +118,26 @@
           button.innerText = 'Mua hàng'
           div.classList.add('productlp')
 
+          console.log(index);
+
           div.append(image)
           div.append(name)
           div.append(price)
           div.append(des)
           div.appendChild(button)
           productContent.append(div)
+
+
+          button.addEventListener('click',() => { 
+          window.location = `ordermanagement.html?id=${index}`
+          }) 
         })
       }
       addProduct()
-
       function rederPage(user){
         const nav = document.querySelector(".header_nav-main")
         const welcom = document.querySelector(".welcome")
-
-
-        if (user) {
-          // welcom.innerText = user.email
-
+        if (user) { 
           nav.innerHTML = `
           <div class="header_nav-main">
         <!-- <header> -->
@@ -168,15 +156,12 @@
             <li>Pin và trạm sạc</li>
           </ul>
         </div>
-
         <div class="header_nav-register-logout">
             <div>
-
             </div >
             <span class="welcome">${user.email}</span>
            <i class="fa-solid fa-user"></i> 
            <div>
-            
             <div class="logout" onclick="logOut()">LogOut</div>
           
             </div>
@@ -189,14 +174,15 @@
           
           `
         }
-
       }
-
       function logOut() {
         localStorage.removeItem("userLogin")
         location.reload();
         window.location("login.html")
       }
+
+    
+      changePage()
     </script>
   </body>
 </html>
