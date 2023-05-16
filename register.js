@@ -1,4 +1,4 @@
-function register() {
+function register(event) {
   const username = document.querySelector('#usename').value;
   const email = document.querySelector('#email').value;
   const password = document.querySelector('#password').value;

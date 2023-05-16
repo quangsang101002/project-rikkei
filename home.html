@@ -101,8 +101,6 @@
       rederPage(userLogin) 
     
       function addProduct(){
-   
-
         getProduct.forEach((product, index) => {
           const productContent = document.querySelector(".product_content")
           const image = document.createElement("img")
@@ -118,7 +116,6 @@
           button.innerText = 'Mua hàng'
           div.classList.add('productlp')
 
-          console.log(index);
 
           div.append(image)
           div.append(name)
@@ -126,10 +123,8 @@
           div.append(des)
           div.appendChild(button)
           productContent.append(div)
-
-
           button.addEventListener('click',() => { 
-          window.location = `ordermanagement.html?id=${index}`
+          window.location = `ordermanagement.html?id=${product.id}`
           }) 
         })
       }
@@ -182,7 +177,7 @@
       }
 
     
-      changePage()
+      // changePage()
     </script>
   </body>
 </html>

@@ -29,15 +29,9 @@
     <th>id</th>
     <th>UserName</th>
     <th>Email</th>
+    <th>Action</th>
   </tr>
-  <!-- <tr >
-    <td>${index + 1}</td>
-    <td >${product.name}</td>
-    <td>${product.price}</td>
-    <td>${product.image}</td>
-    <td>${product.description}</td>
-    </tr> -->
-
+ 
 </thead>
 <tbody>
   <!-- <tr>
@@ -57,8 +51,8 @@
     <td>${index +1}</td>
     <td>${user.username}</td>
     <td >${user.email}</td>
+    <td><button class="delete-user" onclick="deleteUser(${index})">Delete</button></td?
     </tr>
-    
       `
     });
     table.innerHTML = tableadd;
@@ -84,6 +78,21 @@ function searchUser() {
 
     }
  }
+}
+
+function deleteUser(id){
+  console.log("id", id);
+  // const user = document.querySelector(".delete-user")
+  const getUser = JSON.parse(localStorage.getItem("user"))
+  
+  getUser.forEach((user, index )=> {
+    console.log(index);
+    if(index === id){
+      getUser.splice(index, 1)
+    }
+  });
+  localStorage.setItem("user", JSON.stringify(getUser))
+  
 }
 
 </script>

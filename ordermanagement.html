@@ -35,11 +35,16 @@
     .container{
       display: flex;
     }
+    .container{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
   </style>
   <body>
     <h3>Nhập thông tin</h3>
     <div class="container">
-      <form action="">
+      <div>
+      <!-- <form action=""> -->
         <label for="fname">First Name</label>
         <input
           type="text"
@@ -47,6 +52,7 @@
           name="firstname"
           placeholder="Họ và Tên"
         />
+       
 
         <label for="lname">Last Name</label>
         <input
@@ -72,36 +78,79 @@
 
         
         <button onclick="payUser()">Gửi Thông Tin</button>
-      </form>
+      <!-- </form> -->
+    </div>
 
       <div class="info_motorbike">
         <img src="" alt="">
+        <h1 class="name-product"></h1>
         <h2 class="price"></h2>
+        <p class="color"></p>
+        
+
       </div>
     </div>
 
     <script>
 
 function payProduct() {
+  const url = new URL(document.URL);
+  const id = url.searchParams.get("id");
   const getProduct = JSON.parse(localStorage.getItem("product"))
-  getPayOder(getProduct)
   const info = document.querySelector(".info_motorbike")
   const myImg = document.querySelector("img");
   const price = document.querySelector(".price")
+  const name = document.querySelector(".name-product")
+  const color = document.querySelector(".color")
+
+
+  
 
   getProduct.forEach(product=> {
-    myImg.src = product.image;
+    let iduser = product.id
+  if (iduser == id) {
+      myImg.src = product.image;
     info.appendChild(myImg);
+    name.innerText = product.name
     price.innerText = product.price;
+    color.innerText = product.description
+
     info.insertBefore(price, null); // Chèn phần tử price vào sau phần tử ảnh
+    info.insertBefore(name, null); // Chèn phần tử price vào sau phần tử ảnh.innerText
+    info.insertBefore(color, null); // Chèn phần tử price vào sau phần tử ảnh
+  }
   });
+
+
 }
  payProduct()
+
+
  function payUser(id) {
   const name = document.querySelector("#name").value
   const info = document.querySelector("#infouser").value
   const phone = document.querySelector("#phone").value
   const email = document.querySelector("#email").value
+  const price = document.querySelector(".price").innerText
+  const namePd = document.querySelector(".name-product").innerText
+  const color = document.querySelector(".color").innerText
+ const getCtm = JSON.parse(localStorage.getItem("infoCustomer")) ?? []
+
+
+  const infoCustomer =
+    {
+      name:name,
+      info:info,
+      phone:phone,
+      email:email,
+      price:price,
+      namePd:namePd,
+      color:color
+    }
+  
+  getCtm.push(infoCustomer)
+  localStorage.setItem("infoCustomer", JSON.stringify(getCtm))
+
 
  const payMoney = JSON.parse(localStorage.getItem("payUser")) ?? []
 
@@ -116,26 +165,6 @@ function payProduct() {
   localStorage.setItem("payUser", JSON.stringify(payMoney))
 
  }
-
- function getPayOder(products){
-  const url = new URL(document.URL);
-   const id = url.searchParams.get("id");
-   
-products.forEach((product) => {
-  if (product.id === 1) {
-    
-    
-  }
-
-  
-
-})
- }
-
-
-
-
-
 
     </script>
   </body>
