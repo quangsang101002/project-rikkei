@@ -5,6 +5,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./admin.css" />
   </head>
-  <body></body>
+  <body>
+    <table id="customers">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>CCCD</th>
+          <th>Phone</th>
+          <th>NameProduct</th>
+          <th>Price</th>
+          <th>Color</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script>
+      const getInfoCtm = JSON.parse(localStorage.getItem('infoCustomer'));
+      const tbody = document.querySelector('tbody');
+
+      function customersOrder() {
+        let product = '';
+        getInfoCtm.forEach((infoCtm, index) => {
+          product += `
+        <tr>
+          <td>${infoCtm.id}</td>
+          <td>${infoCtm.name}</td>
+          <td>${infoCtm.email}</td>
+          <td>${infoCtm.cccd}</td>
+          <td>${infoCtm.phone}</td>
+          <td>${infoCtm.namePd}</td>
+          <td>${infoCtm.price}</td>
+          <td>${infoCtm.color}</td>
+          <td><button class="btn-delete">DELETE</button></td>
+          </tr>
+          `;
+          // <td><button class="btn-delete" data-index="${index}">DELETE</button></td>
+        });
+        tbody.innerHTML = product;
+        const btnDelete = document.querySelectorAll('.btn-delete');
+        btnDelete.forEach((btnDelete) => {
+          btnDelete.addEventListener('click', () => {
+            // const index = event.target.getAttribute('data-index');
+            getInfoCtm.splice(btnDelete.id, 1);
+            customersOrder();
+          });
+        });
+
+        localStorage.setItem('infoCustomer', JSON.stringify(getInfoCtm));
+      }
+
+      customersOrder();
+    </script>
+  </body>
 </html>

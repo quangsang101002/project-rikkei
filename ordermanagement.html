@@ -1,51 +1,27 @@
 <!DOCTYPE html>
-<html>
-  <style>
-    input[type='text'],
-    select {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./odermanagera.css">
+  <script src="https://smtpjs.com/v3/smtp.js">
+  </script>
+  
+</head>
+<body>
 
-    input[type='submit'] {
-      width: 100%;
-      background-color: #4caf50;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
 
-    input[type='submit']:hover {
-      background-color: #45a049;
-    }
+  
 
-    div {
-      border-radius: 5px;
-      background-color: #f2f2f2;
-      padding: 20px;
-    }
-    .container{
-      display: flex;
-    }
-    .container{
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-    }
-  </style>
-  <body>
+
+ 
+ 
     <h3>Nhập thông tin</h3>
     <div class="container">
       <div>
       <!-- <form action=""> -->
-        <label for="fname">First Name</label>
         <input
           type="text"
           id="name"
@@ -54,7 +30,6 @@
         />
        
 
-        <label for="lname">Last Name</label>
         <input
           type="text"
           id="infouser"
@@ -103,13 +78,10 @@ function payProduct() {
   const name = document.querySelector(".name-product")
   const color = document.querySelector(".color")
 
-
-  
-
   getProduct.forEach(product=> {
     let iduser = product.id
   if (iduser == id) {
-      myImg.src = product.image;
+    myImg.src = product.image;
     info.appendChild(myImg);
     name.innerText = product.name
     price.innerText = product.price;
@@ -125,10 +97,9 @@ function payProduct() {
 }
  payProduct()
 
-
  function payUser(id) {
   const name = document.querySelector("#name").value
-  const info = document.querySelector("#infouser").value
+  const cccd = document.querySelector("#infouser").value
   const phone = document.querySelector("#phone").value
   const email = document.querySelector("#email").value
   const price = document.querySelector(".price").innerText
@@ -137,33 +108,56 @@ function payProduct() {
  const getCtm = JSON.parse(localStorage.getItem("infoCustomer")) ?? []
 
 
+ let ebody = `
+ <b>Name: </b>${name}
+ <br>
+ <b>CCCD: </b>${cccd}
+ <br>
+ <b>Phone: </b>${phone}
+ <br>
+ <b>Email: </b>${email}
+ <br>
+ <b>Price: </b>${price}
+ <br>
+ <b>NameProduct:</b>${namePd}
+ <br>
+ <b>Color: </b>${color}
+ <br>
+ 
+ `
+
+ Email.send({
+    SecureToken : "4236c88c-33cd-49fb-ab6b-c6821cdb123c",
+    To : 'quangsang101002@gmail.com',
+    From : "quangsang101002@gmail.com",
+    Subject : "mail" + email,
+    Body : ebody
+}).then(
+  message => alert(message)
+);
+
+
   const infoCustomer =
     {
+      id: getCtm.length + 1,
       name:name,
-      info:info,
+      cccd:cccd,
       phone:phone,
       email:email,
       price:price,
       namePd:namePd,
       color:color
     }
-  
+
+
+
+
   getCtm.push(infoCustomer)
-  localStorage.setItem("infoCustomer", JSON.stringify(getCtm))
+    localStorage.setItem("infoCustomer", JSON.stringify(getCtm))
 
-
- const payMoney = JSON.parse(localStorage.getItem("payUser")) ?? []
-
-  const pay = {
-    id: payMoney.length + 1,
-    name: name,
-    info: info,
-    phone: phone,
-    email: email
-  }
-  payMoney.push(pay)
-  localStorage.setItem("payUser", JSON.stringify(payMoney))
-
+    window.location = "home.html";
+    alert("Cảm ơn bạn đã mua hàng")
+  
  }
 
     </script>

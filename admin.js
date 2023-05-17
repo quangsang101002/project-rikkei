@@ -35,7 +35,7 @@ function handelAdmin() {
   const description = document.querySelector('.description').value;
 
   const product = {
-    id: getProduct.length,
+    id: getProduct.length + 1,
     name: name,
     price: price,
     image: image,
