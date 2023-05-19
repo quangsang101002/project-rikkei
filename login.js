@@ -1,7 +1,9 @@
 function handeLogin() {
   const username = document.querySelector('#usename').value;
   const email = document.querySelector('#email').value;
-  const password = document.querySelector('#password').value;
+  const password = document.querySelector('.password_login').value;
+  const passworkError = document.querySelector('.login-error');
+  const emaiLogon = document.querySelector('.emaiLogon');
 
   const login = {
     username: username,
@@ -13,14 +15,15 @@ function handeLogin() {
   const getLogin = JSON.parse(localStorage.getItem('user'));
 
   getLogin.forEach((user) => {
-    if (
-      user.email === email &&
-      user.password === password &&
-      user.username === username
-    ) {
-      window.location = 'home.html';
+    if (user.email == email) {
+      if (user.password == password) {
+        window.location = 'home.html';
+      } else {
+        passworkError.innerText = 'Nhập mật khẩu sai';
+        return;
+      }
     } else {
-      //   alert('tên đăng nhập sai');
+      emaiLogon.innerText = 'Nhập Email sai';
       return;
     }
   });

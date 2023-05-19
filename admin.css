@@ -65,3 +65,11 @@
 .modal-content-edit {
   display: none;
 }
+.wrap-a {
+  background-color: #04aa6d;
+  display: flex;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}

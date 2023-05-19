@@ -70,9 +70,9 @@ video#video-vinfast-banner {
   margin-bottom: 100px;
 }
 .product {
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   font-size: 18px;
   font-weight: 500;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .product h2 {
   font-size: 18px;
@@ -84,11 +84,15 @@ video#video-vinfast-banner {
   gap: 10px;
   padding-bottom: 100px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 0 40px;
 }
 .productlp {
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 6px;
   font-size: 18px;
   font-weight: 500;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  overflow: hidden;
 }
 .header_nav-register-logout a {
   background-color: blue;
@@ -117,4 +121,34 @@ span {
 .logout {
   cursor: pointer;
   padding-left: 20px;
+}
+.product_content {
+  padding-bottom: 100px;
+}
+button {
+  display: block;
+  padding: 10px;
+  background-color: blue;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 6px;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+button:hover {
+  cursor: pointer;
+  background-color: #fff;
+  color: black;
+}
+img {
+  display: block;
+  margin-bottom: 40px;
+}
+h2,
+h3,
+p {
+  display: block;
+  text-align: center;
+  margin: 15px 0;
 }

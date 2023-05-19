@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="./odermanagera.css">
+  <link
+  href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500&family=Roboto:wght@300;400;500&display=swap"
+  rel="stylesheet"
+/>
   <script src="https://smtpjs.com/v3/smtp.js">
   </script>
   
@@ -18,7 +22,10 @@
 
  
  
-    <h3>Nhập thông tin</h3>
+    <!-- <h3>Nhập thông tin cá nhân</h3> -->
+    <!-- <div class="logo">
+      <img src="./image/logo-vinfast.png" alt="">
+    </div> -->
     <div class="container">
       <div>
       <!-- <form action=""> -->
@@ -58,9 +65,12 @@
 
       <div class="info_motorbike">
         <img src="" alt="">
+        <div class="info_des">
         <h1 class="name-product"></h1>
         <h2 class="price"></h2>
         <p class="color"></p>
+        </div>
+       
         
 
       </div>
@@ -77,6 +87,7 @@ function payProduct() {
   const price = document.querySelector(".price")
   const name = document.querySelector(".name-product")
   const color = document.querySelector(".color")
+  const infoDes = document.querySelector(".info_des")
 
   getProduct.forEach(product=> {
     let iduser = product.id
@@ -86,10 +97,11 @@ function payProduct() {
     name.innerText = product.name
     price.innerText = product.price;
     color.innerText = product.description
+    infoDes.appendChild(name)
 
-    info.insertBefore(price, null); // Chèn phần tử price vào sau phần tử ảnh
-    info.insertBefore(name, null); // Chèn phần tử price vào sau phần tử ảnh.innerText
-    info.insertBefore(color, null); // Chèn phần tử price vào sau phần tử ảnh
+    // info.insertBefore(price, null); // Chèn phần tử price vào sau phần tử ảnh
+    // info.insertBefore(name, null); // Chèn phần tử price vào sau phần tử ảnh.innerText
+    // info.insertBefore(color, null); // Chèn phần tử price vào sau phần tử ảnh
   }
   });
 

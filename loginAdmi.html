@@ -23,7 +23,7 @@
         <img src="./image/logo-vinfast.png" alt="" />
 
         <div class="form_container-login">
-          <h2 class="form__title">Sign in</h2>
+          <h2 class="form__title">Đăng nhập Admin</h2>
           <div class="form__input">
             <input
               id="usename"
@@ -46,7 +46,7 @@
           </div>
           <div class="form__input">
             <input
-              class="password_login"
+              id="password"
               type="password"
               placeholder="Password"
               autocomplete="new-password"
@@ -59,10 +59,47 @@
 
           <button id="login" onclick="handeLogin()">Login</button>
 
-          <div class="footer">Do not have an account ? <a href="register.html">Register</a></div>
+          <div class="footer">Do not have an account ? <a href="registerAdmin.html">Register</a></div>
         </div>
       </form>
     </div>
   </body>
-  <script src="login.js"></script>
+  <script>
+function handeLogin() {
+  const username = document.querySelector('#usename').value;
+  const email = document.querySelector('#email').value;
+  const password = document.querySelector('#password').value;
+  const passworkError = document.querySelector('.login-error');
+  const emaiLogon = document.querySelector('.emaiLogon');
+
+
+  const login = {
+    username: username,
+    email: email,
+    password: password,
+  };
+
+  event.preventDefault();
+  const getLogin = JSON.parse(localStorage.getItem('userAdmin'));
+  console.log(">>>>>>>",getLogin);
+
+  getLogin.forEach((user) => {
+    if (user.email == email) {
+      if (user.password == password) {
+        window.location = 'admin.html';
+      } else {
+        passworkError.innerText = 'Nhập mật khẩu sai';
+        return;
+      }
+    } else {
+      emaiLogon.innerText = 'Nhập Email sai';
+      return;
+    }
+  });
+
+  localStorage.setItem('userLogin', JSON.stringify(login));
+}
+
+
+  </script>
 </html>

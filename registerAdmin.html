@@ -32,7 +32,7 @@
           <img src="./image/logo-vinfast.png" alt="" />
 
           <div class="form_container">
-            <h2 class="form__title">Đăng kí quyền Admin</h2>
+            <h2 class="form__title">Đăng kí Admin</h2>
             <div class="form__input">
               <input
                 id="usename"
@@ -50,8 +50,8 @@
                 placeholder="Email"
                 autocomplete="new-password"
               />
-              <small></small>
-              <span></span>
+              <small class="error-email" style="color: red;"></small><br>
+              <small class="error-exit" style="color: red;"></small>
             </div>
             <div class="form__input">
               <input
@@ -60,8 +60,9 @@
                 placeholder="Password"
                 autocomplete="new-password"
               />
-              <small></small>
-              <span></span>
+              <small class="error-password" style="color: red;"></small>
+              <small class="error-length" style="color: red;"></small>
+           
             </div>
             <div class="form__input">
               <input
@@ -70,14 +71,14 @@
                 placeholder="Confirm Password"
                 autocomplete="new-password"
               />
-              <small></small>
+              <small ></small>
               <span></span>
             </div>
 
             <button id="login" onclick=" registerAdmin()">Login</button>
 
             <div class="footer">
-              Not a member? <a href="login.html">Signup</a>
+              Not a member? <a href="loginAdmi.html">Signup</a>
             </div>
           </div>
           <!-- </form> -->
@@ -86,38 +87,77 @@
       <script>
         const getUser = JSON.parse(localStorage.getItem('userAdmin')) ?? [];
 
-        function registerAdmin() {
-          const username = document.querySelector('#usename').value;
-          const email = document.querySelector('#email').value;
-          const password = document.querySelector('#password').value;
-          const repeat_password =
-            document.querySelector('#repeat_password').value;
+function registerAdmin() {
+  const username = document.querySelector('#usename').value;
+  const email = document.querySelector('#email').value;
+  const password = document.querySelector('#password').value;
+  const repeat_password = document.querySelector('#repeat_password').value;
+  const errorMail = document.querySelector('.error-email');
+  const errorPassword = document.querySelector('.error-password');
+  const errorLength = document.querySelector('.error-length');
 
-          const userAdmin = {
-            username: username,
-            email: email,
-            password: password,
-          };
+if (getUser.length <= 2) {
+  alert("Chỉ cho phép 2 UserAdmin đăng kí")
+  return
+  
+}
 
-          getUser.push(userAdmin);
-          localStorage.setItem('userAdmin', JSON.stringify(getUser));
-          validate();
-        }
 
-        function validate() {
-          const username = document.querySelector('#usename').value;
-          const email = document.querySelector('#email').value;
-          const password = document.querySelector('#password').value;
-          const repeat_password =
-            document.querySelector('#repeat_password').value;
+  if (!validate()) {
+    return;
+  }
+  const userAdmin = {
+    username: username,
+    email: email,
+    password: password,
+  };
 
-          getUser.forEach((user) => {
-            if (user.email == email) {
-              alert('trùng');
-            }
-          });
-        }
+  let exitUser = false;
+  getUser.forEach((user) => {
+    if (user.email == email) {
+      exitUser = true;
+    }
+  });
+
+  if (password.length < 3) {
+    errorLength.innerText = 'mật khẩu tối đa 3 kí tự';
+    return;
+  } else if (password.length > 8) {
+    errorLength.innerText = 'mật khẩu tối đa có 8 kí tự trở xuống';
+    return;
+  }
+
+  if (password == repeat_password) {
+    if (!exitUser) {
+      getUser.push(userAdmin);
+      localStorage.setItem('userAdmin', JSON.stringify(getUser));
+      window.location = 'loginAdmi.html';
+    } else {
+      errorMail.innerText = 'email đã tồn tại';
+    }
+  } else {
+    errorPassword.innerText = 'mật khẩu không trùng khớp';
+  }
+}
+
+function validate() {
+  const errorExit = document.querySelector('.error-exit');
+  const email = document.querySelector('#email').value;
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (regex.test(email)) {
+    return true;
+  } else {
+    errorExit.innerText = 'Định dạng Email sai';
+    return false;
+  }
+}
+
       </script>
+    </html>
+  </body>
+</html>
+
     </html>
   </body>
 </html>
