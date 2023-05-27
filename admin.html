@@ -23,13 +23,14 @@
 <body>
 
   <div class="container">
+
+   
     <div class="wrap-a">
 <a href="usermanagement.html">Quản lí User</a>
 <a href="oder.html">Quản lí đơn hàng admin</a>
 <a href="home.html">Home</a>
     </div>
-
-    <input type="text" placeholder="enter infomation product" id="mySearch" onkeyup="filter()" style="height: 40px; width: 500px; border-radius: 8px; font-size: 20px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 0px 20px;">
+    <input type="text" placeholder="Search product..." id="mySearch" onkeyup="filter()" >
 
 
 <!-- The Modal -->
@@ -38,27 +39,34 @@
   <!-- open modal when add the product -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <button onclick="handelAdmin()">add</button>
-    <p>Some text in the Modal..</p>
-    <input type="text" placeholder="name" class="name">
-    <input type="text" placeholder="price" class="price">
-    <input type="text" placeholder="Image" class="image">
-    <input type="text" placeholder="description" class="description">
+    <button onclick="handelAdmin()" class="btn_click">Add </button>
+     <h2>Thêm Sản phẩm</h2>
+     <div class="modal-input">
+      <input type="text" placeholder="name" class="name">
+      <input type="text" placeholder="price" class="price">
+      <input type="text" placeholder="Image" class="image">
+      <input type="text" placeholder="description" class="description">
+     
+     </div>
    
   </div>
 </div>
 <!-- open modal when Edit the product -->
-<div class="modal-content-edit">
-  <button class="close-edit">&times;</button>
-  <!-- <button onclick="handelEdit()">EDIT</button> -->
-  <input type="text" placeholder="name" class="name-edit">
-  <input type="text" placeholder="price" class="price-edit">
-  <input type="text" placeholder="description" class="description-edit">
-  <button class="save-button">Save</button>
+<div class="modal-edit">
+  <div class="modal-content-edit">
+    <button class="close-edit">&times;</button>
+    <!-- <button onclick="handelEdit()">EDIT</button> -->
+    <input type="text" placeholder="name" class="name-edit">
+    <input type="text" placeholder="price" class="price-edit">
+    <input type="text" placeholder="description" class="description-edit">
+    <input type="text" placeholder="image" class="image-edit">
+    <button class="save-button">Save</button>
+  </div>
 </div>
 
+
 <!-- open modal when add the product -->
-<Button id="myBtn" onclick="modal()">ADD</Button>
+<Button id="myBtn" onclick="modal()" class="add_product">Add products</Button>
 <table id="customers">
   <thead>
   <tr>

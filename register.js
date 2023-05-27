@@ -1,4 +1,4 @@
-const getUser = JSON.parse(localStorage.getItem('userAdmin')) ?? [];
+const getUser = JSON.parse(localStorage.getItem('user')) ?? [];
 
 function registerAdmin() {
   const username = document.querySelector('#usename').value;
@@ -54,7 +54,7 @@ function validate() {
   if (regex.test(email)) {
     return true;
   } else {
-    errorExit.innerText = 'Định dạng Email sai';
+    errorExit.textContent = 'Định dạng Email sai';
     return false;
   }
 }

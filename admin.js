@@ -1,29 +1,22 @@
 function modal() {
   // handelAdmin();
-  var modal = document.getElementById('myModal');
-
-  // Get the button that opens the modal
-  var btn = document.getElementById('myBtn');
-
-  // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName('close')[0];
-
-  // When the user clicks the button, open the modal
+  const modal = document.getElementById('myModal');
+  const btn = document.getElementById('myBtn');
+  const span = document.getElementsByClassName('close')[0];
   btn.onclick = function () {
     modal.style.display = 'block';
   };
-  // When the user clicks on <span> (x), close the modal
   span.onclick = function () {
     modal.style.display = 'none';
   };
 
-  // When the user clicks anywhere outside of the modal, close it
   window.onclick = function (event) {
     if (event.target == modal) {
       modal.style.display = 'none';
     }
   };
 }
+modal();
 const getProduct = JSON.parse(localStorage.getItem('product')) ?? [];
 
 handelDelete();
@@ -34,21 +27,45 @@ function handelAdmin() {
   const image = document.querySelector('.image').value;
   const description = document.querySelector('.description').value;
 
+  const modal = document.getElementById('myModal');
+
   const product = {
     id: getProduct.length + 1,
+
     name: name,
     price: price,
     image: image,
     description: description,
   };
-
-  getProduct.push(product);
-  localStorage.setItem('product', JSON.stringify(getProduct));
-  handelUpdate(getProduct);
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  };
+  if (
+    name.trim() !== '' &&
+    price.trim() !== '' &&
+    image.trim() !== '' &&
+    description.trim() !== ''
+  ) {
+    getProduct.push(product);
+    localStorage.setItem('product', JSON.stringify(getProduct));
+    handelUpdate(getProduct);
+    modal.style.display = 'none';
+  } else {
+    alert('Bạn chưa nhập thông tin! OK');
+  }
 }
+document.onkeydown = function (e) {
+  const modal = document.getElementById('myModal');
+  if (e.key === 'Enter' && modal.style.display === 'block') {
+    handelAdmin();
+  }
+};
 // thêm sản phẩm
 function handelUpdate(getProduct) {
   const table = document.querySelector('tbody');
+
   let tableList = '';
   getProduct.forEach((product, index) => {
     tableList += `
@@ -58,8 +75,12 @@ function handelUpdate(getProduct) {
     <td>${product.price}</td>
     <td>${product.image}</td>
     <td>${product.description}</td>
-    <td><button onclick="handelEdit(${product.id})" >Edit</button>
-    <button onclick="handelDelete(${product.id})">Delete</button></td>
+    <td><button class="btn_edit" onclick="handelEdit(${
+      product.id
+    })" >Edit</button>
+    <button class="btn_delete" onclick="handelDelete(${
+      product.id
+    })">Delete</button></td>
     </tr>
     `;
   });
@@ -87,13 +108,13 @@ function handelDelete(id) {
 
 // sửa sản phẩm
 function handelEdit(id) {
-  const displayModal = document.querySelector('.modal-content-edit');
+  const displayModal = document.querySelector('.modal-edit');
   const closeedit = document.querySelector('.close-edit');
   const nameEditInput = document.querySelector('.name-edit');
   const priceEditInput = document.querySelector('.price-edit');
   const descriptionEditInput = document.querySelector('.description-edit');
   const saveButton = document.querySelector('.save-button');
-
+  const imageEdit = document.querySelector('.image-edit');
   const getProductss = JSON.parse(localStorage.getItem('product'));
 
   displayModal.style.display = 'block';
@@ -106,6 +127,7 @@ function handelEdit(id) {
       nameEditInput.value = product.name;
       priceEditInput.value = product.price;
       descriptionEditInput.value = product.description;
+      imageEdit.value = product.image;
     }
   });
 
@@ -113,6 +135,12 @@ function handelEdit(id) {
     handelSave(id);
     displayModal.style.display = 'none';
   });
+
+  window.onclick = function (event) {
+    if (event.target == displayModal) {
+      displayModal.style.display = 'none';
+    }
+  };
 }
 //lưu sản phẩm khi sửa xong
 function handelSave(id) {
@@ -120,12 +148,14 @@ function handelSave(id) {
   const nameEditInput = document.querySelector('.name-edit');
   const priceEditInput = document.querySelector('.price-edit');
   const descriptionEditInput = document.querySelector('.description-edit');
+  const imageEdit = document.querySelector('.image-edit');
 
   getProductss.forEach((product) => {
     if (product.id === id) {
       product.name = nameEditInput.value;
       product.price = priceEditInput.value;
       product.description = descriptionEditInput.value;
+      product.image = imageEdit.value;
     }
   });
 

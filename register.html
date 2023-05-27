@@ -4,86 +4,73 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./register.css" />
     <title>Document</title>
   </head>
   <body>
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@100&display=swap"
-          rel="stylesheet"
-        />
-        <link rel="stylesheet" href="./register.css" />
-        <title>Document</title>
-      </head>
-      <body>
-        <div class="container">
-          <!-- <form action=""> -->
-          <img src="./image/logo-vinfast.png" alt="" />
+    <div class="container">
+      <!-- <form action=""> -->
+      <img src="./image/logo-vinfast.png" alt="" />
 
-          <div class="form_container">
-            <h2 class="form__title">Đăng kí quyền Admin</h2>
-            <div class="form__input">
-              <input
-                id="usename"
-                type="text"
-                placeholder="Usename"
-                autocomplete="new-password"
-              />
-              <small></small>
-              <span></span>
-            </div>
-            <div class="form__input">
-              <input
-                id="email"
-                type="text"
-                placeholder="Email"
-                autocomplete="new-password"
-              />
-              <small class="error-email" style="color: red"></small><br />
-              <small class="error-exit" style="color: red"></small>
-            </div>
-            <div class="form__input">
-              <input
-                id="password"
-                type="password"
-                placeholder="Password"
-                autocomplete="new-password"
-              />
-              <small class="error-password" style="color: red"></small><br />
-              <small class="error-length" style="color: red"></small>
-            </div>
-            <div class="form__input">
-              <input
-                id="repeat_password"
-                type="password"
-                placeholder="Confirm Password"
-                autocomplete="new-password"
-              />
-              <small></small>
-              <span></span>
-            </div>
-
-            <button id="login" onclick=" registerAdmin()">Login</button>
-
-            <div class="footer">
-              Not a member? <a href="login.html">Signup</a>
-            </div>
-          </div>
-          <!-- </form> -->
+      <div class="form_container">
+        <h2 class="form__title">Đăng kí</h2>
+        <div class="form__input">
+          <input
+            id="usename"
+            type="text"
+            placeholder="Usename"
+            autocomplete="new-password"
+          />
+          <small></small>
+          <span></span>
         </div>
-      </body>
-      <script src="./register.js"></script>
-    </html>
+        <div class="form__input">
+          <input
+            id="email"
+            type="text"
+            placeholder="Email"
+            autocomplete="new-password"
+          />
+          <small class="error-email" style="color: red"></small><br />
+          <small class="error-exit" style="color: red"></small>
+        </div>
+        <div class="form__input">
+          <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            autocomplete="new-password"
+          />
+          <small class="error-password" style="color: red"></small><br />
+          <small class="error-length" style="color: red"></small>
+        </div>
+        <div class="form__input">
+          <input
+            id="repeat_password"
+            type="password"
+            placeholder="Confirm Password"
+            autocomplete="new-password"
+          />
+          <small></small>
+          <span></span>
+        </div>
+
+        <button id="login" onclick=" registerAdmin()">Login</button>
+
+        <div class="footer">Not a member? <a href="login.html">Signup</a></div>
+      </div>
+      <!-- </form> -->
+    </div>
   </body>
+  <script src="./register.js"></script>
 </html>

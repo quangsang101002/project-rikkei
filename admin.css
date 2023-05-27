@@ -3,7 +3,16 @@
   border-collapse: collapse;
   width: 100%;
 }
-
+body {
+  font-family: 'Roboto', sans-serif;
+  /* font-family: Mulish; */
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 #customers td,
 #customers th {
   border: 1px solid #ddd;
@@ -41,11 +50,48 @@
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
+  background-color: #fff;
+  position: relative;
+  top: 4%;
+  width: 450px;
   margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+  border-radius: 5px;
+  width: 580px;
+  height: 245px;
+  overflow: hidden;
+  padding: 18px;
+  animation: showModal 0.2s linear;
+}
+.modal-content h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.modal-input input {
+  height: 25px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  border: 1px solid;
+  width: 253px;
+  height: 32px;
+  margin: 6px;
+  padding: 0 10px;
+}
+.add_product {
+  width: 103px;
+  height: 31px;
+  position: absolute;
+  top: 30px;
+  right: 36%;
+  cursor: pointer;
+  font-size: 14px;
+}
+input.price {
+  margin-bottom: 20px;
+}
+.modal-input {
+  text-align: center;
 }
 
 /* The Close Button */
@@ -55,21 +101,130 @@
   font-size: 28px;
   font-weight: bold;
 }
-
+a {
+  text-decoration: none;
+}
+button {
+  cursor: pointer;
+}
 .close:hover,
 .close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
 }
+.modal-edit {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
 .modal-content-edit {
-  display: none;
+  background-color: #fff;
+  position: relative;
+  top: 4%;
+  width: 450px;
+  margin: auto;
+  border-radius: 5px;
+  width: 580px;
+  height: 245px;
+  overflow: hidden;
+  padding: 18px;
+  animation: showModal 0.2s linear;
 }
 .wrap-a {
   background-color: #04aa6d;
   display: flex;
   height: 80px;
   align-items: center;
-  justify-content: center;
   gap: 40px;
+  padding: 0 40px;
+}
+input#mySearch {
+  height: 40px;
+  width: 275px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0px 20px;
+  position: absolute;
+  top: 23px;
+  right: 40px;
+  outline: none;
+  border: none;
+  border: 1px solid;
+}
+.modal-content-edit input {
+  height: 25px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  border: 1px solid;
+  width: 253px;
+  height: 32px;
+  margin: 6px;
+  padding: 0 10px;
+}
+button.close-edit {
+  display: block;
+  font-size: 22px;
+  font-weight: 800;
+  width: 46px;
+  background-color: #242222;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 39px;
+  cursor: pointer;
+  /* border: navajowhite; */
+}
+button.save-button {
+  font-size: 17px;
+  width: 67px;
+  height: 33px;
+  background-color: #36d836;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  right: 35px;
+  /* margin-left: 227px; */
+}
+button.btn_edit {
+  border: none;
+  padding: 6px 15px;
+  font-size: 15px;
+  border-radius: 4px;
+  background-color: #f6f628;
+  color: #fff;
+  font-weight: 700;
+}
+button.btn_delete {
+  border: none;
+  padding: 6px 15px;
+  font-size: 15px;
+  border-radius: 4px;
+  background-color: rgb(243, 8, 8);
+  color: #fff;
+  font-weight: 700;
+}
+@keyframes showModal {
+  from {
+    top: -200px;
+  }
+  to {
+    top: 4%;
+  }
 }
