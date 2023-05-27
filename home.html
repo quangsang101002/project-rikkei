@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
-    <div>
+    <div class="main">
       <div class="header_nav-main">
         <!-- <header> -->
         <div class="logo-vf" >
@@ -36,7 +36,6 @@
             <div>
 
             </div>
-            <a href="admin.html">Admin</a>
           <a href="register.html">Đăng kí</a>|
           <a href="login.html">Đăng nhập</a>
           <!-- <i class="fa-solid fa-user"></i> -->
@@ -68,7 +67,7 @@
         </div>
       </section>
     </div>
-
+  </body>
     <script>
       const getProduct = JSON.parse(localStorage.getItem("product"))
       const userLogin = JSON.parse(localStorage.getItem("userLogin"))   
@@ -134,7 +133,7 @@
             <div class="logout" onclick="logOut()">LogOut</div>
           
             </div>
-           
+            <a href="registerAdmin.html">Admin</a>
           <a href="">ĐĂNG KÍ LÁI THỬ</a>
           
         </div>
@@ -153,5 +152,5 @@
     
       // changePage()
     </script>
-  </body>
+ 
 </html>

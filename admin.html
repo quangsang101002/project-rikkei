@@ -1,92 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./admin.css">
-</head>
-<body>
-    
-<style>
-  a {
-    display: block;
-    /* display: flex; */
-    background-color: #04aa6d;
-    color: #fff;
-    font-size: 18px;
-}
+    <link rel="stylesheet" href="./admin.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrap-a">
+        <a href="registerAdmin.html">Admin</a>
+        <a href="usermanagement.html">Quản lí User</a>
+        <a href="oder.html">Quản lí đơn hàng admin</a>
+        <a href="home.html">Home</a>
+      </div>
+      <input
+        type="text"
+        placeholder="Search product..."
+        id="mySearch"
+        onkeyup="filter()"
+      />
 
-</style>
-</head>
-<body>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- open modal when add the product -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <button onclick="handelAdmin()" class="btn_click">Add</button>
+          <h2>Thêm Sản phẩm</h2>
+          <div class="modal-input">
+            <input type="text" placeholder="name" class="name" />
+            <input type="text" placeholder="price" class="price" />
+            <input type="text" placeholder="Image" class="image" />
+            <input type="text" placeholder="description" class="description" />
+          </div>
+        </div>
+      </div>
+      <!-- open modal when Edit the product -->
+      <div class="modal-edit">
+        <div class="modal-content-edit">
+          <button class="close-edit">&times;</button>
+          <!-- <button onclick="handelEdit()">EDIT</button> -->
+          <input type="text" placeholder="name" class="name-edit" />
+          <input type="text" placeholder="price" class="price-edit" />
+          <input
+            type="text"
+            placeholder="description"
+            class="description-edit"
+          />
+          <input type="text" placeholder="image" class="image-edit" />
+          <button class="save-button">Save</button>
+        </div>
+      </div>
 
-  <div class="container">
-
-   
-    <div class="wrap-a">
-      <a href="registerAdmin.html">Đăng kí Admin</a>
-<a href="usermanagement.html">Quản lí User</a>
-<a href="oder.html">Quản lí đơn hàng admin</a>
-<a href="home.html">Home</a>
+      <!-- open modal when add the product -->
+      <button id="myBtn" onclick="modal()" class="add_product">
+        Add products
+      </button>
+      <table id="customers">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>image</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr></tr>
+        </tbody>
+      </table>
     </div>
-    <input type="text" placeholder="Search product..." id="mySearch" onkeyup="filter()" >
-
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- open modal when add the product -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <button onclick="handelAdmin()" class="btn_click">Add </button>
-     <h2>Thêm Sản phẩm</h2>
-     <div class="modal-input">
-      <input type="text" placeholder="name" class="name">
-      <input type="text" placeholder="price" class="price">
-      <input type="text" placeholder="Image" class="image">
-      <input type="text" placeholder="description" class="description">
-     
-     </div>
-   
-  </div>
-</div>
-<!-- open modal when Edit the product -->
-<div class="modal-edit">
-  <div class="modal-content-edit">
-    <button class="close-edit">&times;</button>
-    <!-- <button onclick="handelEdit()">EDIT</button> -->
-    <input type="text" placeholder="name" class="name-edit">
-    <input type="text" placeholder="price" class="price-edit">
-    <input type="text" placeholder="description" class="description-edit">
-    <input type="text" placeholder="image" class="image-edit">
-    <button class="save-button">Save</button>
-  </div>
-</div>
-
-
-<!-- open modal when add the product -->
-<Button id="myBtn" onclick="modal()" class="add_product">Add products</Button>
-<table id="customers">
-  <thead>
-  <tr>
-    <th>id</th>
-    <th>Name</th>
-    <th>Price</th>
-    <th>image</th>
-    <th>Description</th>
-    <th>Action</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-  </tr>
-</tbody>
-</table>
-
-</div>
-
-</body>
-<script src="admin.js"></script>
+  </body>
+  <script src="admin.js"></script>
 </html>

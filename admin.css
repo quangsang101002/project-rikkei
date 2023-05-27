@@ -220,6 +220,14 @@ button.btn_delete {
   color: #fff;
   font-weight: 700;
 }
+a {
+  display: block;
+  /* display: flex; */
+  background-color: #04aa6d;
+  color: #fff;
+  font-size: 18px;
+}
+
 @keyframes showModal {
   from {
     top: -200px;
